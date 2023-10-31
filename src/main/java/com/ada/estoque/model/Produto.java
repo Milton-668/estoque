@@ -20,6 +20,6 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    private String categoria;
-    private String preco;
+    private int quantidade;
+    private Double preco;
 }
