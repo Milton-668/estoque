@@ -1,6 +1,7 @@
 package com.ada.estoque.service;
 
 import com.ada.estoque.dto.ProdutoDto;
+import com.ada.estoque.exception.BadRequestException;
 import com.ada.estoque.mapper.ProdutoMapper;
 import com.ada.estoque.model.Produto;
 import com.ada.estoque.repository.ProdutoRepository;
@@ -24,5 +25,15 @@ public class ProdutoService {
         return produtoRepository.save(mapper);
     }
 
+
+    public Produto findById(long id) {
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new BadRequestException("Não encontrado"));
+    }
+
+
+    //Ao ser chamado o método de deleção de quantidade:
+    //Deverá ser apontado o produto apartir de um identificador,
+    //apartir desse identificador, deverá ser excluida a quantidade do item selecionado
 
 }
